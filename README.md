@@ -6,4 +6,4 @@
 ---
 ## 下载
 
-[当前最新版本：v1.0](https://github.com/frogfans/LockScreen/releases/download/1.0/com.zengyu.lockscreen_1.0_release.apk)
+[当前最新版本：v1.0](https://raw.githubusercontent.com/frogfans/LockScreen/master/LockScreen/app/release/com.zengyu.lockscreen_1.0_release.apk)
