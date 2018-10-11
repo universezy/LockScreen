@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">LockScreen</string>
+    <string name="app_name">锁屏</string>
+    <string name="toast_problem">糟糕，锁屏功能出了点问题！</string>
+    <string name="toast_reject">授权锁屏失败。</string>
 </resources>

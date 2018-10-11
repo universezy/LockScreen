@@ -3,26 +3,46 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "lockscreen.zengyu.com.lockscreen"
-        minSdkVersion 21
+        applicationId "com.zengyu.lockscreen"
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
+            zipAlignEnabled true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    if (variant.buildType.name.equals('release')) {
+                        outputFileName = "${defaultConfig.applicationId}_${defaultConfig.versionName}_release.apk"
+                    } else if (variant.buildType.name.equals('debug')) {
+                        outputFileName = "${defaultConfig.applicationId}_${defaultConfig.versionName}_debug.apk"
+                    }
+                }
+            }
+        }
+        debug {
+            zipAlignEnabled true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    if (variant.buildType.name.equals('release')) {
+                        outputFileName = "${defaultConfig.applicationId}_${defaultConfig.versionName}_release.apk"
+                    } else if (variant.buildType.name.equals('debug')) {
+                        outputFileName = "${defaultConfig.applicationId}_${defaultConfig.versionName}_debug.apk"
+                    }
+                }
+            }
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
