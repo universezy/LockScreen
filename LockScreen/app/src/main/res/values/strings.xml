@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">锁屏</string>
-    <string name="toast_problem">糟糕，锁屏功能出了点问题！</string>
+    <string name="app_name">一键锁屏</string>
+    <string name="policy_content">1. 使用锁屏功能需要授权。\n2. 卸载不成功时，请先停用该授权。</string>
+    <string name="toast_problem">设备管理器不可用。</string>
+    <string name="dialog_content">1. 跳转授权页失败，请前往 设置-安全-设备管理与凭证-设备管理器 中授权。\n2. 卸载不成功时，请先停用该授权。</string>
+    <string name="dialog_ok">确定</string>
     <string name="toast_reject">授权锁屏失败。</string>
 </resources>
