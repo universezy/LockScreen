@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private final int PERMISSION_REQUEST_CODE = 0;
+    private final String PACKAGE_SETTINGS = "com.android.settings";
+    private final String CLASS_DEVICE_ADMIN_SETTINGS = "com.android.settings.Settings$DeviceAdminSettingsActivity";
     private ComponentName componentName;
     private DevicePolicyManager manager;
 
@@ -66,10 +68,21 @@ public class MainActivity extends Activity {
                         .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                                finish();
+                                try {
+                                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                                    intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                                    ComponentName cn = new ComponentName(PACKAGE_SETTINGS, CLASS_DEVICE_ADMIN_SETTINGS);
+                                    intent.setComponent(cn);
+                                    startActivity(intent);
+                                    finish();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
                             }
                         })
                         .create().show();
