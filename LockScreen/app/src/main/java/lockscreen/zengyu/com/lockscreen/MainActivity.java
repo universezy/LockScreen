@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
+import android.provider.Settings;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -65,6 +66,9 @@ public class MainActivity extends Activity {
                         .setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Settings.ACTION_SECURITY_SETTINGS);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
                                 finish();
                             }
                         })
